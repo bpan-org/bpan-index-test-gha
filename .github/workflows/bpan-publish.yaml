@@ -1,0 +1,14 @@
+on:
+  repository_dispatch:
+    type: bpan-publish
+
+jobs:
+  bpan-publish:
+    runs-on: ubuntu-22.04
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: bpan-org/bpan-plugin-publish-gha@main
+      env:
+        github_json: ${{ toJson(github) }}
+
